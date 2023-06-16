@@ -1,4 +1,4 @@
-package com.company.board.board.dao;
+package com.company.board.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
