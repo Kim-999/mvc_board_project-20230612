@@ -29,7 +29,7 @@ public class BoardController {
 		BoardDao boardDao = new BoardDao();
 		boardDao.write(bname, btitle, bcontent);
 		
-		return "";
+		return "redirect:list";
 	}
 	
 	@RequestMapping(value = "/list")
@@ -41,5 +41,16 @@ public class BoardController {
 		model.addAttribute("list", boardDtos);
 		
 		return "list";
+	}
+	
+	@RequestMapping(value = "/content_view")
+	public String content_view(HttpServletRequest request, Model model) { 
+		
+		BoardDao boardDao = new BoardDao();
+		BoardDto boardDto = boardDao.view(request.getParameter("bid"));
+		
+		model.addAttribute("boardDto", boardDto);
+		
+		return "content_view";
 	}
 }
