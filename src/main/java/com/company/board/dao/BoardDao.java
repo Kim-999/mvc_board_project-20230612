@@ -1,7 +1,6 @@
 package com.company.board.dao;
 
 import java.sql.Connection;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -160,6 +159,40 @@ public class BoardDao {
 		}
 		
 		return boardDto;
+	}
+	
+	public void modify(String btitle, String bcontent, String bid) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String sql = "UPDATE mvc_board SET btitle=?, bcontent=? WHERE bid=? ";
+			
+			pstmt = conn.prepareStatement(sql);			
+			
+			pstmt.setString(1, btitle);
+			pstmt.setString(2, bcontent);
+			pstmt.setString(3, bid);
+			
+			pstmt.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 }
