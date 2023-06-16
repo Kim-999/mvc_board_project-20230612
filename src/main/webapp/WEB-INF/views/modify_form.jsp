@@ -4,35 +4,43 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 글수정</title>
+<title>글 내용 보기</title>
 </head>
 <body>
-	<h2>게시판 글수정</h2>
+	<h2>글 내용 보기</h2>
 	<hr>
-	<table border="1" cellspacing="0" cellpadding="0" width="600">
-		<form action="modify">
-		
-		<input type="hidden" name="bid" size="60" value="${boardDto.bid }">
-		
+	<table border="1" cellspacing="0" cellpadding="0" width="500">
 		<tr>
-			<td>이 름</td>
-			<td><input type="text" name="bname" size="60" value="${boardDto.bname }" readonly="readonly"></td>
+			<th width="100">번호</th>
+			<td>${boardDto.bid }</td>
 		</tr>
 		<tr>
-			<td>제 목</td>
-			<td><input type="text" name="btitle" size="60" value="${boardDto.btitle }"></td>
+			<th>조회수</th>
+			<td>${boardDto.bhit }</td>
 		</tr>
 		<tr>
-			<td>내 용</td>
-			<td><textarea rows="10" cols="45" name="bcontent">${boardDto.bcontent }</textarea></td>
-		</tr>	
+			<th>작성자</th>
+			<td>${boardDto.bname }</td>
+		</tr>
+		<tr>
+			<th>제목</th>
+			<td>${boardDto.btitle }</td>
+		</tr>
+		<tr>
+			<th>내용</th>
+			<td>${boardDto.bcontent }</td>
+		</tr>
+		<tr>
+			<th>등록일</th>
+			<td>${boardDto.bdate }</td>
+		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="submit" value="완료">&nbsp;&nbsp;
-				<input type="button" value="취소" onclick="javascript:window.location.href='list'">
+				<input type="button" value="수정" onclick="javascript:window.location.href='modify_form?bid=${boardDto.bid }'">
+				<input type="button" value="삭제" onclick="javascript:window.location.href='delete?bid=${boardDto.bid }'">
+				<input type="button" value="목록" onclick="javascript:window.location.href='list'">
 			</td>
 		</tr>
-		</form>
 	</table>
 </body>
 </html>
